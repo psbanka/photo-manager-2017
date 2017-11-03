@@ -1,4 +1,4 @@
-/* global it describe beforeEach expect */
+/* global xit it describe beforeEach expect */
 
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -25,6 +25,13 @@ describe('integration-testing', () => {
   it('has 100 rows in a table body', () => {
     const userRows = app.render().find('#user-data tr')
     expect(userRows.length).toBe(100)
+  })
+
+  it('the columns are what we expect', () => {
+    const userRows = app.render().find('#user-data tr')
+    userRows.each((_, userRow) => {
+      expect(userRow.children.length).toBe(6)
+    })
   })
 
   it('renders without crashing', () => {
