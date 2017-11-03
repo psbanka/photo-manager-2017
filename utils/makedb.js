@@ -62,5 +62,37 @@ const createUsers = async () => {
   }
 }
 
+// Super sweet version:
+// ---------------------------------------------------------------------------
+
+const apiFetchCall = async () => {
+  /* wait for fakeApi() call to resolve,
+   * it will return a promise due to getAvatar() I guess */
+  const myInit = {
+    method: 'POST',
+    body: JSON.stringify(await fakeApi())
+  }
+  // push to server, accept server response and convert
+  const response = await fetch(myURL, myInit)
+  const output = await response.json()
+  return output
+}
+
+const makeAllApiCalls = async () => {
+  // use async to block the fetch delete
+  await fetch(myURL, {method: 'DELETE'})
+  // make and array the fill with apiFetchCall function then map and call
+  const allApiCalls = Array(100).fill(apiFetchCall).map((call) => call())
+  /* if apiFetchCall returns a promise Promise.all will block
+   * else if it just returns output its nonblocking,
+   * eventually resolving and getting printed */
+  Promise.all(allApiCalls)
+    .then(console.log)
+    .catch(console.log)
+  console.log('api call counter >>', apiCallCounter)
+}
+
+makeAllApiCalls()
+
 createUsers()
   .then(console.log)
