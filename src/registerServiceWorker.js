@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* global fetch URL */
 
 // In production, we register a service worker to serve assets from local cache.
 

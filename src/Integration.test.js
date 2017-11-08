@@ -1,4 +1,4 @@
-/* global xit it describe beforeEach expect */
+/* global it describe beforeEach expect */
 
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -29,8 +29,9 @@ describe('integration-testing', () => {
 
   it('the columns are what we expect', () => {
     const userRows = app.render().find('#user-data tr')
+    expect(userRows.length > 0).toBe(true)
     userRows.each((_, userRow) => {
-      expect(userRow.children.length).toBe(6)
+      expect(userRow.children.length).toBe(7)
     })
   })
 
