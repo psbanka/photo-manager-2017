@@ -7,14 +7,16 @@
     "enzyme-adapter-react-16": "^1.0.3",
     "eslint": "^4.9.0",
     "jest-cli": "^21.2.1",
+    "material-ui": "^0.19.4",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-scripts": "1.0.14"
+    "react-scripts": "1.0.14",
+    "react-tap-event-plugin": "^3.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "npm run lint && react-scripts test --env=jsdom",
     "lint": "eslint src",
     "lint-fix": "eslint --fix src",
     "eject": "react-scripts eject"
