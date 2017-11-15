@@ -75,40 +75,35 @@ class App extends Component {
         </TableRow>
       )
     })
-    console.log(this.state.currentPage)
     return (
-      <div className='App'>
-        <AppBar title='Photo Manager' showMenuIconButton={false} />
-        <PageButtons
-          currentPage={this.state.currentPage}
-          changePage={this.changePage}
-          numberOfPages={Math.ceil(this.state.dataKeys.length / this.state.pageSize)} />
-        <Paper style={{margin: '20px'}} zDepth={1} >
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHeaderColumn>First Name</TableHeaderColumn>
-                <TableHeaderColumn>Last Name</TableHeaderColumn>
-                <TableHeaderColumn>Email</TableHeaderColumn>
-                <TableHeaderColumn>Address</TableHeaderColumn>
-                <TableHeaderColumn>City</TableHeaderColumn>
-                <TableHeaderColumn>Avatar</TableHeaderColumn>
-              </TableRow>
-            </TableHeader>
-            <TableBody id='user-data'>
-              {rows}
-            </TableBody>
-          </Table>
-        </Paper>
-      </div>
+      <MuiThemeProvider>
+        <div className='App'>
+          <AppBar title='Photo Manager' showMenuIconButton={false} />
+          <PageButtons
+            currentPage={this.state.currentPage}
+            changePage={this.changePage}
+            numberOfPages={Math.ceil(this.state.dataKeys.length / this.state.pageSize)} />
+          <Paper style={{margin: '20px'}} zDepth={1} >
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHeaderColumn>First Name</TableHeaderColumn>
+                  <TableHeaderColumn>Last Name</TableHeaderColumn>
+                  <TableHeaderColumn>Email</TableHeaderColumn>
+                  <TableHeaderColumn>Address</TableHeaderColumn>
+                  <TableHeaderColumn>City</TableHeaderColumn>
+                  <TableHeaderColumn>Avatar</TableHeaderColumn>
+                </TableRow>
+              </TableHeader>
+              <TableBody id='user-data'>
+                {rows}
+              </TableBody>
+            </Table>
+          </Paper>
+        </div>
+      </MuiThemeProvider>
     )
   }
 }
 
-const WrappedApp = () => (
-  <MuiThemeProvider>
-    <App />
-  </MuiThemeProvider>
-)
-
-export default WrappedApp
+export default App
