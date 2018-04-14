@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
+import { Link } from 'react-router-dom'
 
 class PageButton extends Component {
   render () {
     const buttons = Array(this.props.numberOfPages).fill().map((_, i) => {
-      return <RaisedButton
-        key={`pageButton${i}`}
-        label={`${i + 1}`}
-        primary={this.props.currentPage === i + 1}
-        onClick={() => this.props.changePage(i + 1)} />
+      return (
+        <Link key={`pageButton${i}`} to={`/users/${i + 1}`}>
+          <RaisedButton
+            label={`${i + 1}`}
+            primary={this.props.currentPage === i + 1}
+          />
+        </Link>
+      )
     })
     return (
       <div>

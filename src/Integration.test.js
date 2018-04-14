@@ -29,7 +29,7 @@ describe('integration-testing', () => {
     })
   })
 
-  it('has 100 rows in a table body', () => {
+  it('has 20 rows in a table body', () => {
     const userRows = app.find('#user-data TableRow')
     expect(userRows.length).toBe(20)
   })
@@ -55,7 +55,7 @@ describe('integration-testing', () => {
   it('has the right button highlighted', () => {
     const buttons = app.find('RaisedButton')
     buttons.forEach((button, i) => {
-      expect(button.prop('primary')).toBe(i === app.state().currentPage - 1)
+      expect(button.prop('primary')).toBe(i === 0)
     })
   })
 })
